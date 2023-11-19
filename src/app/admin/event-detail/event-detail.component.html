@@ -1,0 +1,81 @@
+<!-- ENCABEZADO-->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">EVENT</h1>
+</div>
+
+<!-- CONTENEDOR PRINCIPAL DEL FORMULARIO-->
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col">
+            <form #formValid class="needs-validation" #formEvent="ngForm" (ngSubmit)="submit($event)" novalidate>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Nombre Evento</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    [(ngModel)]="form.name"
+                    #name="ngModel"
+                    required>
+                  <div class="invalid-feedback">
+                    Porfavor ingrese un nombre.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="date" class="form-label">Fecha</label>
+                  <input
+                    type="datetime-local"
+                    class="form-control"
+                    id="date"
+                    name="date"
+                    [(ngModel)]="form.date"
+                    #date="ngModel"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="picture" class="form-label">Imagen</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    (change)="onFileSelected($event)">
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Descripción</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    name="description"
+                    [(ngModel)]="form.description"
+                    #description="ngModel"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="location" class="form-label">Lugar</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="location"
+                    name="location"
+                    [(ngModel)]="form.location"
+                    #location="ngModel"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="planner" class="form-label">Organizador</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="planner"
+                    name="planner"
+                    [(ngModel)]="form.planner"
+                    #planner="ngModel"
+                    required>
+                </div>
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a class="btn btn-secondary mx-2" routerLink="/admin/dash/events">Volver</a>
+              </form>
+        </div>
+    </div>
+</div>

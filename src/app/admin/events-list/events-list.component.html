@@ -1,0 +1,36 @@
+<!--ENCABEZADO-->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Events</h1>
+</div>
+<!--CONTENEDOR PRINCIPAL-->
+<div class="container">
+  <!--TABLA PARA MOSTRAR TODOS LOS EVENTOS-->
+  <table class="table">
+    <thead>
+      <tr>
+        <!--ENCABEZADOS DE LA TABLA-->
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Location</th>
+        <th scope="col">Date</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--CICLO NGFOR PARA RECORRER LA LISTA DE EVENTOS Y MOSTRAR CADA FILA EN LA TABLA-->
+      <tr *ngFor="let item of list">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.location}}</td>
+        <td>{{item.date}}</td>
+        <td>
+          <!--BOTONES DE EDITAR Y ELIMINAR EVENTOS-->
+          <a type="button" class="btn btn-primary" [routerLink]="'/admin/dash/detail/' + item.id">Edit</a>
+          <button type="button" class="btn btn-danger mx-2" (click)="deleteEvent(item.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+</table>
+<!--BOTON PARA CREAR UN NUEVO EVENTO-->
+<a type="button" class="btn btn-warning" [routerLink]="'/admin/dash/detail/' + 0">Crear Evento</a>
+</div>

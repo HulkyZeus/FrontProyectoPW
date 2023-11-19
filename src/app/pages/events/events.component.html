@@ -1,0 +1,72 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <form class="d-flex" #loginForm="ngForm" (ngSubmit)="filterEvents()">
+          <input
+            class="form-control me-2"
+            type="text"
+            placeholder="Name"
+            id="name"
+            name="name"
+            [(ngModel)]="filterEvent.name"
+            #name="ngModel">
+            <input
+            class="form-control me-2"
+            type="date"
+            placeholder="Date"
+            id="date"
+            name="date"
+            [(ngModel)]="filterEvent.date"
+            #date="ngModel">
+            <input
+            class="form-control me-2"
+            type="text"
+            placeholder="Location"
+            id="location"
+            name="location"
+            [(ngModel)]="filterEvent.location"
+            #location="ngModel">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row align-items-start">
+        <div class="col mb-4 d-flex justify-content-center" *ngFor="let item of list">
+            <div class="card" style="width: 18rem;">
+                <div style="height: 170px; overflow-y: hidden;">
+                    <img src="{{ urlPictures }}{{ item.picture }}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{ item.name }}</h5>
+                  <p class="card-text">{{ item.date }}</p>
+                  <p class="card-text text-secondary">{{ item.location }}</p>
+                  <p class="card-text" *ngIf="show">{{item.description}}</p>
+                  <button  class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#modal" (click)="showDetail(item)">Ver más</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{event.name}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Descripción: </strong>{{event.description}}</p>
+          <p><strong>Fecha: </strong>{{event.date}}</p>
+          <p><strong>Lugar: </strong>{{event.location}}</p>
+          <p><strong>Organizador: </strong>{{event.planner}}</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
